@@ -67,7 +67,11 @@ export class GoTestExplorer {
         const testConfig = {
             dir: path.dirname(testNode.uri.fsPath),
             goConfig: vscode.workspace.getConfiguration('go', testNode.uri),
-            flags: [""],
+            // flags: [""],
+            flags: [
+                "-count=1", // 阻止go test缓存
+                "-v"
+            ],
             functions: tests,
             testUri: testNode.uri,
             testName: path.basename(testNode.uri.fsPath)
